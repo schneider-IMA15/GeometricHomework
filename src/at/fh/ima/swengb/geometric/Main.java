@@ -1,6 +1,10 @@
 package at.fh.ima.swengb.geometric;
 
 import at.fh.ima.swengb.geometric.model.GeometricShape;
+import at.fh.ima.swengb.geometric.model.threeDim.Cone;
+import at.fh.ima.swengb.geometric.model.threeDim.Cylinder;
+import at.fh.ima.swengb.geometric.model.threeDim.QuadraticPyramid;
+import at.fh.ima.swengb.geometric.model.threeDim.Shape3D;
 import at.fh.ima.swengb.geometric.model.twoDim.Shape2D;
 import at.fh.ima.swengb.geometric.model.twoDim.angular.Parallelogram;
 import at.fh.ima.swengb.geometric.model.twoDim.angular.Rhombus;
@@ -22,17 +26,37 @@ public class Main {
 
         shapeList2D.add(new CircularSegment(0,0,30,40));
         shapeList2D.add(new CircularSegment(0,0,40,50));
-        shapeList2D.add(new Parallelogram(0,0,10,20,30));
-        shapeList2D.add(new Parallelogram(0,0,20,30,40));
+        shapeList2D.add(new Parallelogram(0,0,10,50,30));
+        shapeList2D.add(new Parallelogram(0,0,20,60,40));
         shapeList2D.add(new Rhombus(0,0,15,25));
         shapeList2D.add(new Rhombus(0,0,25,35));
 
         double sumOfAreas = 0;
         double sumOfPerimeters = 0;
 
-        for (GeometricShape shape : shapeList2D) {
-            Shape2D.
+        for (Shape2D shape : shapeList2D) {
+            sumOfAreas += shape.calculateArea();
+            sumOfPerimeters += shape.calculatePerimeter();
         }
+
+        System.out.println("Sum of Areas = " + sumOfAreas);
+        System.out.println("Sum of Perimeters = " + sumOfPerimeters);
+
+        List<Shape3D> shapeList3D = new ArrayList<>();
+        shapeList3D.add(new QuadraticPyramid(10,20));
+        shapeList3D.add(new Cone(30,40));
+        shapeList3D.add(new Cylinder(50,60));
+
+        double sumOfVolumes = 0;
+        double sumOfSurfaces = 0;
+
+        for (Shape3D shape : shapeList3D) {
+            sumOfVolumes += shape.calculateVolume();
+            sumOfSurfaces += shape.calculateSurfaceArea();
+        }
+
+        System.out.println("Sum of Volumes = " + sumOfVolumes);
+        System.out.println("Sum of Surfaces = " + sumOfSurfaces);
     }
 
     public void testStuff() {
